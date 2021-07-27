@@ -1,4 +1,4 @@
-const redis = require('../redis_client');
+const redis = require("../redis_client");
 
 let sha;
 
@@ -30,7 +30,7 @@ const load = async () => {
 
   // Load script on first use...
   if (!sha) {
-    sha = await client.scriptAsync('load', getSource());
+    sha = await client.scriptAsync("load", getSource());
   }
 
   return sha;
@@ -59,9 +59,11 @@ const buildEvalshaParams = (key, field, value, comparator) => [
   comparator,
 ];
 
-const updateIfGreater = (key, field, value) => buildEvalshaParams(key, field, value, '>');
+const updateIfGreater = (key, field, value) =>
+  buildEvalshaParams(key, field, value, ">");
 
-const updateIfLess = (key, field, value) => buildEvalshaParams(key, field, value, '<');
+const updateIfLess = (key, field, value) =>
+  buildEvalshaParams(key, field, value, "<");
 
 module.exports = {
   /**

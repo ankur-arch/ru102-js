@@ -1,4 +1,4 @@
-const redis = require('../redis_client');
+const redis = require("../redis_client");
 
 let sha;
 
@@ -25,7 +25,7 @@ const load = async () => {
 
   // Load script on first use...
   if (!sha) {
-    sha = await client.scriptAsync('load', getSource());
+    sha = await client.scriptAsync("load", getSource());
   }
 
   return sha;
